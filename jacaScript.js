@@ -246,4 +246,45 @@ console.log(p1.distancia(p2))
 p2.moveY(-4)
 console.log(p1.distancia(p2))
 
-console.log(`==================== Class 12 ====================`)
+console.log(`==================== Class 13 ====================`)
+
+var nombre = 'Victor'
+//Todo lo que definamos "fuera" se encontraran en el Scope GLOBAL,
+//Se podra acceder a todos los demas entornos.
+function saludo() {
+  console.log(`hola ${nombre}`)
+}
+saludo() //hola Victor.
+
+function saludo2(nombre) { //Aqui creariamos una Escope LOCAL
+  //Solo podriamos acceder dentro de esta FUNCION.
+  console.log(`hola ${nombre}`)
+}
+saludo2("Eric") //hola Eric
+
+function saludo3() { 
+  var nombre = 'Eric'//Aqui creariamos una Escope LOCAL
+  //Y pasaria lo mismo que en el Ejemplo saludo2()
+  console.log(`hola ${nombre}`)
+}
+saludo3() //hola Eric
+
+function saludo4() { 
+  nombre = 'Eric'
+  //Al quitarle el el VAR, Javascript ira a buscar en su primer SCOPE (la funcion)
+  // A ver si encuenta "nombre" para modificarlo, si no lo encuentra, subira 
+  //un nivel de SCOPE (en este caso el GLOBAL) y modificara nuestra Var nombre = 'Victor'
+  //Y pasaria lo mismo que en el Ejemplo saludo2()
+  console.log(`hola ${nombre}`)
+}
+saludo4() //hola Eric
+
+function saludo5() { 
+  if(true) {
+    var nombre = 'Eric'
+  }
+  //Mostrara Eric, porque  aunque nosotros definamos ese "NOMBRE" dentro del contexto del IF
+  //Sigue estando dentro de la SCOPE de la funcion.
+  console.log(`hola ${nombre}`)
+}
+saludo5() //hola Eric
