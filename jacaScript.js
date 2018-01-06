@@ -1,15 +1,14 @@
 //Class 1
 
 //Comilla invertida ``
-console.log(`==================== Class 1 ====================`)
 
+console.log(`==================== Class 2 ====================`)
 let base = 5
 let height = 7
 const  triangleArea = (base, height) => base * height / 2
 console.log(`Area de un triangulo de base ${base} y altura ${height} = ${triangleArea(base,height)}`)
 
-console.log(`==================== Class 2 ====================`)
-
+console.log(`==================== Class 3 ====================`)
 const   starWars7 = 'StarWars Peli Reshulona',
         pgStarWars7 = 13,
         nameVgamez ='Victor',
@@ -17,10 +16,10 @@ const   starWars7 = 'StarWars Peli Reshulona',
         nameSanti = 'Santi',
         ageSanti = 12,
         canWatchStarWars7 = (name, age) => (age) >= pgStarWars7 ? alert(`${name}, puede pasar a ver la peli`) : alert(`${name}, no puede ver la peli`)
-        canWatchStarWars7(nameVgamez,ageVgamez)
-        canWatchStarWars7(nameSanti,ageSanti)
+canWatchStarWars7(nameVgamez,ageVgamez)
+canWatchStarWars7(nameSanti,ageSanti)
 
-console.log(`==================== Class 3 ====================`)
+console.log(`==================== Class 4 ====================`)
 // 1- Si la palabra termina en "ar", se le quitan esos los dos caracteres
 // 2- Si la palabra inicia con Z, se le añade "pe" al final
 // 3- Si tiene 10 o mas caracteres, hay que ponerle un guion en la mitad
@@ -49,8 +48,7 @@ console.log(platzom('zarpar'))
 console.log(platzom('abecedario'))
 console.log(platzom('sometemos'))
 
-console.log(`==================== Class 4 ====================`)
-
+console.log(`==================== Class 5 ====================`)
 const nombre = 'Sacha'
 const dias = [
   'lunes',
@@ -77,3 +75,35 @@ const promedioKms = totalKms / length
 console.log(`En promedio, ${nombre} corrió ${promedioKms.toFixed(2)}kms`)
 
 console.log(`==================== Class 6 ====================`)
+let vidaGoku = 100;
+let vidaSuperman = 100;
+
+const min_power = 5;
+const max_power = 12;
+
+const ambosSiguenVivos = () => vidaGoku > 0 && vidaSuperman > 0;
+const calcularGolpe = () => Math.round(Math.random() * (max_power - min_power) + min_power);
+const gokuSigueVivo = () => vidaGoku > 0
+let round = 0;
+
+while(ambosSiguenVivos()) //Mientras la funcion devuelva TRUE
+{
+  round++
+  console.log(`Round: ${round}`)
+  const golpeGoku = calcularGolpe();
+  const golpeSuperman = calcularGolpe();
+  if (golpeGoku > golpeSuperman) {
+    console.log(`Goku ataca a Superman con un golpe de ${golpeGoku}`);
+    vidaSuperman -= golpeGoku;
+    console.log(`Superman queda en ${vidaSuperman} puntos de vida`);
+  } else {
+    console.log(`Superman ataca a Goku con un golpe de ${golpeSuperman}`);
+    vidaGoku -= golpeSuperman;
+    console.log(`Goku queda en ${vidaGoku} puntos de vida`);
+  }
+}
+if(gokuSigueVivo()) {
+  console.log(`Goku gano la pelea. su vida es de: ${vidaGoku}`);
+} else {
+  console.log(`Superman gano la pelea. su vida es de: ${vidaSuperman}`);
+}
