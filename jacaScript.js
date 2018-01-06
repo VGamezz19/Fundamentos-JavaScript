@@ -76,4 +76,4 @@ for (let i = 0; i < length; i++) {
 const promedioKms = totalKms / length
 console.log(`En promedio, ${nombre} corrió ${promedioKms.toFixed(2)}kms`)
 
-console.log(`==================== Class 5 ====================`)
+console.log(`==================== Class 6 ====================`)
