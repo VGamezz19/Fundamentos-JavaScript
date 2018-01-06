@@ -209,8 +209,36 @@ const Punto = {
 }
 
 const p1 = Object.create(Punto)
-p1.init(0,4)
+p1.init(0,4)g
 p1.init(3,0)
+
+console.log(p1.distancia(p2))
+p1.moveX(10)
+console.log(p1.distancia(p2))
+p2.moveY(-4)
+console.log(p1.distancia(p2))
+
+console.log(`==================== Class 12 ====================`)
+class Punto {
+  constructor(x,y){
+    this.x =x
+    this.y = y
+  }
+  moveX(x) {
+    this.x += x
+  }
+  moveY(y) {
+    this.y += y
+  }
+  distancia (p) {
+    const x = this.x - p.x,
+          y = this.y - p.y;
+    return Math.sqrt(x * x + y * y).toFixed(2)
+  }
+}
+
+const p1 = new Punto(0,4),
+      p2 = new Punto(3,0)
 
 console.log(p1.distancia(p2))
 p1.moveX(10)
