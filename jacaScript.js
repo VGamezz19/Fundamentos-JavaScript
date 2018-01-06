@@ -161,5 +161,36 @@ const p1 = {
               y = p1.y - p2.y;
         return Math.sqrt(x * x + y * y).toFixed(2)
       };
-
 console.log(distancia(p1,p2))
+
+console.log(`==================== Class 10 ====================`)
+function Punto (x,y){
+  this.x = x
+  this.y = y
+
+  //Tambien podemos añadir las funciones asi... 
+  // this.moveX = (x) => {
+  //   this.x = this.x + x
+  // }
+  this.moveY = (y) => {
+    this.y += y
+  }
+}
+  // o usando el prototype
+  Punto.prototype.moveX = function moveX(x) {
+    this.x +=  x
+  }
+  Punto.prototype.distancia = function distancia (p) {
+    const x = this.x - p.x,
+          y = this.y - p.y;
+    return Math.sqrt(x * x + y * y).toFixed(2)
+  }
+
+const p1 = new Punto(0,4),
+      p2 = new Punto(3,0)
+
+console.log(p1.distancia(p2))
+p1.moveX(10)
+console.log(p1.distancia(p2))
+p2.moveY(-4)
+console.log(p1.distancia(p2))
