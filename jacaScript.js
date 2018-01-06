@@ -164,19 +164,10 @@ const p1 = {
 console.log(distancia(p1,p2))
 
 console.log(`==================== Class 10 ====================`)
-function Punto (x,y){
-  this.x = x
-  this.y = y
-
-  //Tambien podemos añadir las funciones asi... 
-  // this.moveX = (x) => {
-  //   this.x = this.x + x
-  // }
-  this.moveY = (y) => {
-    this.y += y
+  function Punto (x,y){
+    this.x = x
+    this.y = y  
   }
-}
-  // o usando el prototype
   Punto.prototype.moveX = function moveX(x) {
     this.x +=  x
   }
@@ -184,6 +175,9 @@ function Punto (x,y){
     const x = this.x - p.x,
           y = this.y - p.y;
     return Math.sqrt(x * x + y * y).toFixed(2)
+  }
+  Punto.prototype.moveY = function moveY(y){
+    this.y += y
   }
 
 const p1 = new Punto(0,4),
@@ -194,3 +188,34 @@ p1.moveX(10)
 console.log(p1.distancia(p2))
 p2.moveY(-4)
 console.log(p1.distancia(p2))
+
+console.log(`==================== Class 11 ====================`)
+const Punto = {
+  init: function (x, y) {
+    this.x = x
+    this.y = y
+  },
+  moveX = function moveX (x){
+    this.x +=x
+  },
+  moveY = function moveX (y){
+    this.y +=y
+  },
+  distancia = function distancia (p) {
+    const x = this.x - p.x,
+          y = this.y - p.y;
+    return Math.sqrt(x * x + y * y).toFixed(2)
+  }
+}
+
+const p1 = Object.create(Punto)
+p1.init(0,4)
+p1.init(3,0)
+
+console.log(p1.distancia(p2))
+p1.moveX(10)
+console.log(p1.distancia(p2))
+p2.moveY(-4)
+console.log(p1.distancia(p2))
+
+console.log(`==================== Class 12 ====================`)
