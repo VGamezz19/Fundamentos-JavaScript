@@ -1,4 +1,5 @@
-//Class 1
+console.log(`==================== Bases del Lenguaje ====================`)
+console.log(`==================== Class 1 ====================`)
 
 //Comilla invertida ``
 
@@ -130,3 +131,15 @@ const proximo = new Date(hoy.getFullYear(), nacimiento.getMonth(), nacimiento.ge
 console.log(proximo.getDay())
 
 console.log(dias[proximo.getDay()])
+
+console.log(`==================== Objetos en JavaScript ====================`)
+console.log(`==================== Class 8 ====================`)
+
+const p1 = {x: 0, y: 4},
+      p2 = {x: 3, y: 0},
+      distancia = (p1,p2) => {
+        const x = p1.x - p2.x,
+              y = p1.y - p2.y;
+        return Math.sqrt(x * x + y * y)
+      };
+console.log(distancia(p1,p2))
