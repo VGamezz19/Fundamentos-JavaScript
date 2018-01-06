@@ -107,3 +107,26 @@ if(gokuSigueVivo()) {
 } else {
   console.log(`Superman gano la pelea. su vida es de: ${vidaSuperman}`);
 }
+
+console.log(`==================== Class 7 ====================`)
+//Calcular cuanto tiempo paso desde tu nacimiento
+const dias =
+[ "domingo",
+  "lunes",
+  "martes",
+  "miercoles",
+  "jueves",
+  "viernes",
+  "sabado"]
+const nacimiento = new Date(1996, 07, 15);
+const hoy = new Date();
+const tiempomil = hoy - nacimiento
+const tiemposeg = tiempomil /1000
+const tiempomin = tiemposeg / 60
+const tiempohor = tiempomin / 60
+const tiempodias = tiempohor / 24
+const tiempoyear = tiempodias / 365
+const proximo = new Date(hoy.getFullYear(), nacimiento.getMonth(), nacimiento.getDate())
+console.log(proximo.getDay())
+
+console.log(dias[proximo.getDay()])
