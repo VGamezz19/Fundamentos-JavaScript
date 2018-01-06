@@ -134,7 +134,6 @@ console.log(dias[proximo.getDay()])
 
 console.log(`==================== Objetos en JavaScript ====================`)
 console.log(`==================== Class 8 ====================`)
-
 const p1 = {x: 0, y: 4},
       p2 = {x: 3, y: 0},
       distancia = (p1,p2) => {
@@ -142,4 +141,25 @@ const p1 = {x: 0, y: 4},
               y = p1.y - p2.y;
         return Math.sqrt(x * x + y * y)
       };
+console.log(distancia(p1,p2))
+
+console.log(`==================== Class 9 ====================`)
+const p1 = {
+        x: 0,
+        y: 4,
+        moveX: x => this.x = this.x + x,
+        moveY: y => this.y = this.y + y
+      }
+      p2 = {
+        x: 3, 
+        y: 0,
+        moveX (x) { this.x = this.x + x},
+        moveY(y) {this.y = this.y + y}
+      }
+      distancia = (p1,p2) => {
+        const x = p1.x - p2.x,
+              y = p1.y - p2.y;
+        return Math.sqrt(x * x + y * y).toFixed(2)
+      };
+
 console.log(distancia(p1,p2))
