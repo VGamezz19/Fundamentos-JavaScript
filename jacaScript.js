@@ -247,7 +247,6 @@ p2.moveY(-4)
 console.log(p1.distancia(p2))
 
 console.log(`==================== Class 13 ====================`)
-
 var nombre = 'Victor'
 //Todo lo que definamos "fuera" se encontraran en el Scope GLOBAL,
 //Se podra acceder a todos los demas entornos.
@@ -288,3 +287,14 @@ function saludo5() {
   console.log(`hola ${nombre}`)
 }
 saludo5() //hola Eric
+
+console.log(`==================== Class 14 ====================`)
+
+function suma(...numeros) {
+  return numeros.reduce(function (acum, numero) {
+    acum += numero
+    return acum
+  }, 0)
+}
+const dobles = (...numeros) => numeros.map(numero => numero * 2)
+const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
