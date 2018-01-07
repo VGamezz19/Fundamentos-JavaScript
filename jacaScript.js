@@ -289,7 +289,6 @@ function saludo5() {
 saludo5() //hola Eric
 
 console.log(`==================== Class 14 ====================`)
-
 function suma(...numeros) {
   return numeros.reduce(function (acum, numero) {
     acum += numero
@@ -298,3 +297,43 @@ function suma(...numeros) {
 }
 const dobles = (...numeros) => numeros.map(numero => numero * 2)
 const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
+
+console.log(`==================== Class 15 ====================`)
+function saludarFamilia(apellido) {
+  return function saludarMiembroDeFamilia(nombre) {
+    console.log(`Hola ${nombre} ${apellido}`)
+  }
+}
+const saludarGomez = saludarFamilia("Gomez")
+const saludarPerez = saludarFamilia("Perez")
+const saludarRomero = saludarFamilia("Romero")
+
+saludarGomez("Pedro")
+saludarGomez("Juan")
+saludarGomez("Laura")
+saludarGomez("Mónica")
+
+saludarPerez("Dario")
+saludarPerez("Martin")
+saludarPerez("Julieta")
+
+saludarRomero("Jorge")
+// -------------Forma 1----------------
+function makePrefixer(prefix){
+	return function addPrefixer(word){
+		console.log(prefix+word)
+	}
+}
+// -------------Forma 2----------------
+function makePrefixer(prefix){
+	return word => prefix + word
+}
+// -------------Forma 3----------------
+const makePrefixer = fix => re => fix + re;
+
+const prefijoRe = makePrefixer("re")
+prefijoRe("bueno")
+const howFix = makePrefixer('Cipote')  //prefix = fix(Cipote) => re => fix(Cipote) + re
+howFix('concha')   // prefix = fix(Cipote) => re(concha) => fix(Cipote) + re(concha)
+//CipoteConcha
+
