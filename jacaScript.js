@@ -337,3 +337,6 @@ const howFix = makePrefixer('Cipote')  //prefix = fix(Cipote) => re => fix(Cipot
 howFix('concha')   // prefix = fix(Cipote) => re(concha) => fix(Cipote) + re(concha)
 //CipoteConcha
 
+console.log(`==================== Class 16 ====================`)
+var victor = 'victor';
+(function hola(){console.log("hola")})()
