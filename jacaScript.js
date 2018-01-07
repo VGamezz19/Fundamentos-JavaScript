@@ -340,3 +340,20 @@ howFix('concha')   // prefix = fix(Cipote) => re(concha) => fix(Cipote) + re(con
 console.log(`==================== Class 16 ====================`)
 var victor = 'victor';
 (function hola(){console.log("hola")})()
+
+console.log(`==================== Class 17 ====================`)
+class Persona {
+  constructor(nombre, amigos = []) {
+    this.nombre = nombre
+    this.amigos = amigos
+  }
+  listarAmigos() {
+   // const _this = this
+    this.amigos.forEach((amigo) => {
+      // console.log(`Hola, mi nombre es ${_this.nombre} y soy amigo de ${amigo}`)
+      console.log(`Hola, mi nombre es ${this.nombre} y soy amigo de ${amigo}`)
+    }/* .bind(this) */)
+  }
+}
+
+const sacha = new Persona("Sacha", [ "Pedro", "Juan", "Pepe" ])
