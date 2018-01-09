@@ -502,3 +502,20 @@ get('http://www.swapi.co/api/people/1/')
     console.log(`${lukeFetch.name} nació en ${lukeFetch.homeworld.name}, codigo con igualdad de objeto con FETCH`);
   })
   .catch((err) => _handleError(err));
+
+  console.log(`==================== Class 27 ====================`)
+  function handleError(err) {
+    console.log(`Request failed: ${err}`)
+  }
+  
+  async function getLuke() {
+    try {
+      const response = await fetch('http://swapi.co/api/people/1/')
+      const luke = await response.json()
+      const responseHomeworld = await fetch(luke.homeworld)
+      luke.homeworld = await responseHomeworld.json()
+      console.log(`${luke.name} nació en ${luke.homeworld.name}`)
+    } catch (err) {
+      handleError(err)
+    }
+  }
