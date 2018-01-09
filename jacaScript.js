@@ -420,13 +420,10 @@ function get(URL, callback){
 	xhr.open('GET', URL);
 	xhr.send(null);
 }
-
 /* Funcion para tratar el error */
 function handleError(err){
 	console.log(`Request failed: ${err}`) 
 }
-
-
 /*llamada al metodo */
 get('http://www.swapi.co/api/people/1/', function onResponse(err, luke){
 	if(err) return handleError(err)
@@ -442,3 +439,66 @@ get('http://www.swapi.co/api/people/1/', function onResponse(err, luke){
 	console.log(`Request succeded`)
 	console.log('luke', luke)
 })
+
+console.log(`==================== Class 26 ====================`)
+
+function get(URL){
+	//New Promise recibe una funcion
+	return new Promise((resolve, reject)=>{
+		const xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = function () {
+			const DONE = 4
+			const OK = 200
+			if (this.readyState === DONE) {
+				if(this.status === OK){
+					//Todo OK
+					resolve(JSON.parse(this.responseText))
+				}else {
+					//Hubo un error
+					reject(new Error(`Se produjo un error al realizar el request ${this.status}`))
+				}
+			} 
+		}
+		xhr.open('GET', URL);
+		xhr.send(null);
+	})
+}
+/* Funcion para tratar el error */
+function handleError(err){
+	console.log(`Request failed: ${err}`) 
+}
+let luke
+/*llamada al metodo */
+get('http://www.swapi.co/api/people/1/')
+	//lamada a funcion normal
+	.then(function(response){
+		luke = response
+		//promesa
+		return get(luke.homeworld)
+	})
+	//llamada a funcion con arrow functions
+	.then((homeworld)=>{
+		luke.homeworld = homeworld
+		console.log(`${luke.name} nació en ${luke.homeworld.name}`)
+	})
+  .catch((err)=> handleError(err))
+  /// ^******
+  /// OTRA FORMA DE HACER PROMESAS ES CON FETCH
+  /// ^******
+  var lukeFetch;
+  fetch("https://swapi.co/api/people/1/")
+  .then(response =>  
+  //Este response me regresa un JSON 
+    response.json())
+  .then(json => {
+    lukeFetch = json; 
+    return fetch('https://swapi.co/api/planets/1/');
+  })
+  .then((response) => response.json())
+  .then(json => {
+    lukeFetch.homeworld = json; 
+    console.log(`${lukeFetch.name} nació en ${json.name}, código con FETCH`);
+    console.log(`${lukeFetch.name} nació en ${lukeFetch.homeworld.name}, codigo con igualdad de objeto con FETCH`);
+  })
+  .catch((err) => _handleError(err));
