@@ -471,51 +471,61 @@ function handleError(err){
 let luke
 /*llamada al metodo */
 get('http://www.swapi.co/api/people/1/')
-	//lamada a funcion normal
+//lamada a funcion normal
 	.then(function(response){
 		luke = response
-		//promesa
+	//promesa
 		return get(luke.homeworld)
 	})
-	//llamada a funcion con arrow functions
+//llamada a funcion con arrow functions
 	.then((homeworld)=>{
 		luke.homeworld = homeworld
 		console.log(`${luke.name} nació en ${luke.homeworld.name}`)
 	})
   .catch((err)=> handleError(err))
-  /// ^******
-  /// OTRA FORMA DE HACER PROMESAS ES CON FETCH
-  /// ^******
-  var lukeFetch;
-  fetch("https://swapi.co/api/people/1/")
+/// ^******
+/// OTRA FORMA DE HACER PROMESAS ES CON FETCH
+/// ^******
+var lukeFetch;
+fetch("https://swapi.co/api/people/1/")
   .then(response =>  
-  //Este response me regresa un JSON 
-    response.json())
+//Este response me regresa un JSON 
+  response.json())
   .then(json => {
-    lukeFetch = json; 
-    return fetch('https://swapi.co/api/planets/1/');
+  lukeFetch = json; 
+  return fetch('https://swapi.co/api/planets/1/');
   })
   .then((response) => response.json())
   .then(json => {
-    lukeFetch.homeworld = json; 
-    console.log(`${lukeFetch.name} nació en ${json.name}, código con FETCH`);
-    console.log(`${lukeFetch.name} nació en ${lukeFetch.homeworld.name}, codigo con igualdad de objeto con FETCH`);
+  lukeFetch.homeworld = json; 
+  console.log(`${lukeFetch.name} nació en ${json.name}, código con FETCH`);
+  console.log(`${lukeFetch.name} nació en ${lukeFetch.homeworld.name}, codigo con igualdad de objeto con FETCH`);
   })
   .catch((err) => _handleError(err));
 
-  console.log(`==================== Class 27 ====================`)
-  function handleError(err) {
-    console.log(`Request failed: ${err}`)
+console.log(`==================== Class 27 ====================`)
+function handleError(err) {
+  console.log(`Request failed: ${err}`)
+}
+
+async function getLuke() {
+  try {
+    const response = await fetch('http://swapi.co/api/people/1/')
+    const luke = await response.json()
+    const responseHomeworld = await fetch(luke.homeworld)
+    luke.homeworld = await responseHomeworld.json()
+    console.log(`${luke.name} nació en ${luke.homeworld.name}`)
+  } catch (err) {
+    handleError(err)
   }
-  
-  async function getLuke() {
-    try {
-      const response = await fetch('http://swapi.co/api/people/1/')
-      const luke = await response.json()
-      const responseHomeworld = await fetch(luke.homeworld)
-      luke.homeworld = await responseHomeworld.json()
-      console.log(`${luke.name} nació en ${luke.homeworld.name}`)
-    } catch (err) {
-      handleError(err)
-    }
-  }
+}
+
+console.log(`==================== Class 33 ====================`)
+function fibonacci(num) {
+  if (num == 1) return 0
+  if (num == 2) return 1
+
+  return fibonacci(num - 1) + fibonacci(num - 2)
+}
+
+console.log(`==================== Class 34 ====================`)
