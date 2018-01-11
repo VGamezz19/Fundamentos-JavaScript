@@ -1,22 +1,26 @@
 {
-    "name": "platzom",
-    "version": "0.1.0",
-    "description": "Traductor de idioma platzom",
-    "main": "index.js",
-    "scripts": {
-      
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/platzi/platzom.git"
-    },
-    "keywords": [
-      "platzom",
-      "platzi",
-      "fundamentos",
-      "javascript",
-      "js"
-    ],
-    "author": "Victor Gamez",
-    "license": "MIT"
+  "name": "platzom",
+  "version": "0.1.0",
+  "description": "Traductor de idioma platzom",
+  "main": "dist/src/platzom.js",
+  "scripts": {
+    "build": "babel src/platzom.js -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platzi/platzom.git"
+  },
+  "keywords": [
+    "platzom",
+    "platzi",
+    "fundamentos",
+    "javascript",
+    "js"
+  ],
+  "author": "Victor Gamez",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
+}
