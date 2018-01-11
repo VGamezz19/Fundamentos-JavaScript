@@ -1,19 +1,49 @@
-export default function  platzom  (str)  {
-    let translation = str
-    //1
-    translation.toLowerCase().endsWith('ar') ? translation = str.slice(0,-2) : translation
-    //2
-    translation.toLowerCase().startsWith('z') ? translation += 'pe' : translation
-    //3
-    const length = translation.length,
-          half = Math.round(translation.length / 2);
-    length >=  10 ? translation = `${translation.slice(0,half)} - ${translation.slice(half)}`: translation
-    //4
-    const reverse = str => str.split('').reverse().join(''),
-          minMay  = str => str.split('').map(c => str.indexOf(c) % 2 == 0 ? c.toUpperCase() : c.toLowerCase()).join('')
+export default function platzom(str) {
+      let translation = str;
+      
+      // Si la palabra termina con "ar", se le quitan esas dos letras
+      if (str.toLowerCase().endsWith("ar")) {
+        translation = str.slice(0, -2)
+      }
     
+      // Si la palabra inicia con Z, se le añade "pe" al final.
+      if (str.toLowerCase().startsWith("z")) {
+        translation += "pe"
+      }
     
-    translation =  str === reverse(translation) ? minMay(str) : translation
-
-    return translation
-}
+      // Si la palabra traducida tiene 10 o más letras,
+      // se debe partir en dos por la mitad y unir con un guión medio
+      const length = translation.length
+      if (length >= 10) {
+        const firstHalf = translation.slice(0, Math.round(length / 2))
+        const secondHalf = translation.slice(Math.round(length / 2))
+        translation = `${firstHalf}-${secondHalf}`
+        // translation = [firstHalf, secondHalf].join('-')
+      }
+    
+      function minMay(str) {
+        const length = str.length
+        let translation = ''
+        let capitalize = true
+        for (let i = 0; i < length; i++) {
+          const char = str.charAt(i)
+          translation += capitalize ? char.toUpperCase() : char.toLowerCase()
+          capitalize = !capitalize
+        }
+    
+        return translation
+      }
+    
+      function reverse(str) {
+        return str.split('').reverse().join('')
+      }
+    
+      // Por último, si la palabra original es un palíndromo,
+      // ninguna regla anterior cuenta y se devuelve la misma palabra pero
+      // intercalando letras mayúsculas y minúsculas
+      if (str == reverse(str)) {
+        return minMay(str)
+      }
+    
+      return translation
+    }
